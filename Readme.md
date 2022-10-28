@@ -1,1 +1,1 @@
-CurioKid app, a new a way to help your child search for book at the local library.
+CurioKid app, a new a way to help your child search for a book at the local library.

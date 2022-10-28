@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(https://img.freepik.com/free-vector/kids-playground-sunny-weather-children-area_107791-11059.jpg?w=1380&t=st=1666951464~exp=1666952064~hmac=e1919286fb773ca14303efea2cbf119a0bb84d3e63afb2470af962a716c05151);
+    height: 100vh;
+}
