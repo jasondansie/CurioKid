@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: none;
+}
+body{
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(96, 197, 192));
+    
+}
+header,h1,h2{
+    font-family: cursive;
+    font-size:xx-large;
+    font-weight:700;
+    text-align: center;
+    margin:10px;
+}
+h3{
+    font-family: cursive;
+    text-align: center;
+    margin:10px;
+    font-size:medium;
+    font-weight: lighter;
+}
+.multicolor {
+    background-image: linear-gradient(to left, violet, indigo, green, blue, rgba(158, 158, 12, 0.842), orange, red);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+  
+.card{
+    float:left;
+    width:50%;
+    padding: 10px;
+    margin:10px;
+    margin-left:50px;
+    box-shadow: 0 8px 8px 8px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width:40%
+}
+.card:hover{
+    box-shadow: 0 8px 16px 8px rgba(0,0,0,0.2);
+}
