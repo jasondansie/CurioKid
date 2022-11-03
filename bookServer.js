@@ -4,7 +4,7 @@ const http = require('http');
 
 const {port, host} = require('./config.json');
 
-const storage = require('./bookStorage');
+const { getAllBooks, getBook } = require('./bookStorage');
 
 const server = http.createServer((req, res) => {
     const {
@@ -12,27 +12,28 @@ const server = http.createServer((req, res) => {
         searchParams
     } = new URL(`http://${req.headers.host}${req.url}`);
 
-    let resultHtml = '';
+    const route = decodeURIComponent(pathname);
 
+        let result = [];
 
-    if (pathname === '/books') {
-        resultHtml =createCarsHtml(JSON.stringify(storage.getAllBooks()));
-    }
-    else if(pathname==='/cartypes'){
-        resultHtml = createCarsHtml(JSON.stringify(storage.getTitle()));
-    }
-    else{
-        res.end();
-    }
+        if (route === '/books') {
+            result = getAllBooks();
+        }
+        else if(route === '/search/byauthor'){
+            result = getBook('author', searchParams.get('value'));
+        }
+        else if(route === '/search/bytitle'){
+            result = getBook('title', searchParams.get('value'));
+        }
+        else{
+            result = {message: "page not found"};
+        }
 
-    res.writeHead(200, {
-        'Content-Type':'text/html; charset= utf-8'
-    });
-    res.end(resultHtml);
-});
+        res.writeHead(200,{ 
+            'Content-type': 'application/json'
+        });
 
-server.listen(port,host, () => console.log(`Server on ${host}:${port} is running...`));
+        res.end(JSON.stringify(result,null,2));
+})
 
-function createCarsHtml(carArray){
-    return `<pre>${carArray}</pre>`;
-}
+server.listen(port,host, ()=>console.log(`Server running on ${host} port ${port}`));

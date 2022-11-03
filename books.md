@@ -4,27 +4,18 @@
 ```
 http://localhost:3000/books
 ```
-## get all title
+## search by title
 ```
-http://localost:3000/cartypes
+http://localost:3000/search/
 ```
-## search by licence
+## search by author
 ```
 http://localhost:3000/search/bylicence?value=abc-123
 ```
-## search by model
+## search by age
 ```
 http://localhost:3000/search/bymodel?value=mercedes
 
-# Version 2:
 
-## search by licence
-```
-http//localhost:3000/search?key=licence&value=abc-123
-````
-## search by model
-```
-http//localhost:3000/search?key=model&value=mercedes
-````
 
 

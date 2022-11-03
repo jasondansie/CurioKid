@@ -6,24 +6,16 @@ function getAllBooks(){
     return books;
 }
 
-function getAuthor (){
-    const authors = [];
-    for (const book of books){
-        if (!books.includes(book.author)) {
-            books.push((book.author));
+function getBook(key, value){
+    const found = [];
+    if (key && value) {
+        for(const book of books){
+            if (book[key] === value) {
+                found.push(book);
+            }
         }
     }
-    return authors;
+    return found;
 }
 
-function getTitle (){
-    const titles = [];
-    for (const book of books){
-        if (!books.includes(book.title)) {
-            boojs.push((book.title));
-        }
-    }
-    return titles;
-}
-
-module.exports = { getAllBooks, getTitle, getAuthor}
+module.exports = { getAllBooks, getBook }
