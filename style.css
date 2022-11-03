@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overscroll-behavior: none;
+}
+body {
+    background: url(https://wallpaperaccess.com/full/4668997.jpg) no-repeat center center/cover;
+    min-height: 100vh;
+}
+.content {
+    position: relative;
+    text-align: center;
+}
+.content img{
+    width: 800px;
+}
+.centered {
+    position: absolute;
+    top: 29%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+}
+h1{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 6rem;
+    color: rgb(246, 242, 241);
+    text-shadow: 3px 3px 3px #dc4a26, 3px 3px 5px #a13104;
+    width: 20%;
+}
+span {
+    color: rgb(228, 92, 23);
+    text-shadow: 3px 3px 3px #464242, 3px 3px 5px #040404;
+}
+.input {
+    text-align: center;
+    margin-top: 1rem;
+}
+input,label {
+    font-size: 2rem;
+}
+input {
+    padding: 1rem;
+    margin-right: 2rem;
+    border-radius: .4rem;
+    width: 550px;
+    box-shadow: 10px 10px 5px rgb(196, 155, 141);
+}
+input:hover{
+    border: none;
+    box-shadow: 1px 1px 2px rgb(236, 234, 234), 0 0 25px rgb(255, 0, 98), 5px 5px 5px rgb(139, 0, 19)
+}
+label {
+    color: rgb(238, 238, 238);
+    font-size: 3rem;
+    text-shadow: 1px 1px 2px rgb(242, 239, 239), 5px 5px 25px rgb(239, 36, 9), 5px 5px 5px rgb(195, 26, 7);
+}
+.cards {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    margin: 1rem;
+    background-color: aliceblue;
+    padding: 1.4rem;
+    text-align: center;
+    box-shadow: 1px 1px 2px rgb(236, 234, 234), 0 0 25px rgb(255, 111, 0), 0px 0px 5px rgb(189, 62, 16);
+}
