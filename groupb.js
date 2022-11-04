@@ -1,4 +1,5 @@
 let cardData = document.querySelector(".cards")
+let search = document.querySelector('#searchBook')
 class Book {
     constructor(age, title, id, author, image) {
         this.age = age;
@@ -24,16 +25,33 @@ books.push (new Book(10, "Diary of a Wimpy Kid", "006", "Jeff Kinney","https://c
 
 console.log(books);
 
-const displayBooks = books => {
-    const bookCards = books.map (
-        book => `
-        <div class="card">
-            <img src="${book.image}" alt="book image">
-            <h2>${book.title}</h2>
-            <h3>${book.author}</h3>
-        </div>
-        `
-    ).join("");
-    cardData.innerHTML = bookCards;
+const getBooks = () => {
+    const displayBooks = books => {
+        const bookCards = books.map (
+            book => `
+            <div class="card">
+                <img src="${book.image}" alt="book image">
+                <h2>${book.title}</h2>
+                <h3>${book.author}</h3>
+            </div>
+            `
+        ).join("");
+        cardData.innerHTML = bookCards;
+    }
+    /* displayBooks(books); */
+    
+    const searchBooks = e => {
+        e.preventDefault();
+
+        let Books = books.filter(book => book.title.includes(search.value));
+
+        if (search.value == "") {
+            displayBooks(books);
+        }
+        else {
+            displayBooks(Books); 
+        }
+    }
+    search.addEventListener("keyup", searchBooks);
 }
-displayBooks(books);
+getBooks();
