@@ -30,7 +30,8 @@ const server = http.createServer((req, res) => {
         }
 
         res.writeHead(200,{ 
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
         });
 
         res.end(JSON.stringify(result,null,2));
