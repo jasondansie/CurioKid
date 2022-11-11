@@ -1,59 +1,87 @@
 
 
 const findAll = document.querySelector("#findAll");
-const search = document.querySelector("#search");
 const bookDisplay = document.querySelector(".books");
-const bytitle = document.querySelector(".byTitle");
-const byauthor = document.querySelector(".byAuthor");
+const searchByAuthor = document.querySelector("#searchByAuthor");
+const searchByTitle = document.querySelector("#searchByTitle");
+const findByAge = document.querySelector("#findByAge");
 
 let bookList = [];
 
 const getBooks = async (bookUrl) => {
     const data = await fetch(bookUrl,{mode:'cors'});
+
     bookList = await data.json();
     console.log('booklist;',bookList);
+    
     displayBooks(bookList);
 }
-
-
+    
 const findAllBooks = () => {
     let allbooks = [];
 
+    getBooks(`http://localhost:3000/books`);   
+
     bookList.forEach(book => {
-        if (book.age <= 7) {
-            allbooks.push(book);
-        }
+        allbooks.push(book); 
     });
 
-    console.log(allbooks);
     displayBooks(allbooks);
-    return allbooks;
+} 
+
+
+const findBooksByAge = (e) => {
+    let allbooks = [];
+
+    bookList.forEach(book => {
+        switch (e.target.name) {
+            case "7":
+                if (book.age <= 7) {
+                    allbooks.push(book);
+                }                 
+                break;
+                
+            case "8":
+                if (book.age >= 8) {
+                    allbooks.push(book);
+                }  
+                break;
+            
+                default:
+                break;
+        }            
+    });
+
+    displayBooks(allbooks);
 }
 
 const displayBooks = (bookArry) => {
    
     const book = bookArry.map((book) => {
 
-            return `<div class="container">
-        <div class="book"> 
-            <h5 id="book-name">${book.title}</h5>
-            <img src= ${book.image} alt="${book.title}" width="100px">
-            <div class="author"> 
-                <label>Author:</label> <h5>${book.author}</h5>
-            </div>
-        </div>
-        </div>`                 
+        return `<div class="container">
+                    <div class="book"> 
+                        <h5 id="book-name">${book.title}</h5>
+                        <img src= ${book.image} alt="${book.title}" width="100px">
+                        <div class="author"> 
+                            <label>Author:</label> <h5>${book.author}</h5>
+                        </div>
+                    </div>
+                </div>`                 
         
     }).join('');
     
     bookDisplay.innerHTML = book;
 }
 
-const searchBooks = (bookUrl) => {
-    
+const searchBooks = (e) => {       
+    let searchString = `http://localhost:3000/search/${e.target.name}?value=${e.target.value}`
+    getBooks(searchString);
 }
 
-findAll.addEventListener("click", getBooks(`http://localhost:3000/books`));
-byauthor.addEventListener("keyup", searchBooks(`http://localhost:3000/search/byauthor`));
-bytitle.addEventListener("keyup", searchBooks(`http://localhost:3000/search/bytitle`));
+//getBooks(`http://localhost:3000/books`)
 
+findAll.addEventListener("click", findAllBooks);
+searchByAuthor.addEventListener("keyup", searchBooks);
+searchByTitle.addEventListener("keyup", searchBooks);
+findByAge.addEventListener("click",findBooksByAge);
